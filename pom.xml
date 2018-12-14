@@ -2,8 +2,8 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>common</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <artifactId>jcommon</artifactId>
+  <version>1.0.0</version>
   <groupId>com.decisionlens</groupId>
   <name>jcommon</name>
   <description>Common utilities and math functions and other useful stuff</description>
