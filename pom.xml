@@ -1,0 +1,172 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>common</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <groupId>com.decisionlens</groupId>
+  <name>jcommon</name>
+  <description>Common utilities and math functions and other useful stuff</description>
+  <packaging>jar</packaging>
+  <url>http://github.com/dlens/jcommon</url>
+
+
+  <licenses>
+    <license>
+      <name>BSD 3-Clause License</name>
+      <url>https://opensource.org/licenses/BSD-3-Clause</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <url>https://github.com/dlens/jcommon</url>
+    <connection>scm:git://github.com/dlens/jcommon.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:dlens/jcommon.git</developerConnection>
+  </scm>
+
+  <developers>
+    <developer>
+      <id>wjladams</id>
+      <name>Dr. William Adams</name>
+      <roles>
+        <role>committer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <organization>
+    <name>Decision Lens Inc.</name>
+    <url>https://github.com/dlens</url>
+  </organization>
+
+  <distributionManagement>
+    <repository>
+      <id>mvnrepo-releases</id>
+      <name>Release Repository</name>
+      <url> https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+    </repository>
+
+    <snapshotRepository>
+      <id>mvnrepo-snapshots</id>
+      <name>Maven Snapshot Repository</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <resources>
+    	<resource><directory>resources</directory></resource>
+    </resources>
+    <testSourceDirectory>test</testSourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>pl.project13.maven</groupId>
+        <artifactId>git-commit-id-plugin</artifactId>
+        <version>2.2.4</version>
+        <executions>
+          <execution>
+            <id>get-the-git-infos</id>
+            <goals>
+              <goal>revision</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+          <prefix>git</prefix>
+          <verbose>false</verbose>
+          <generateGitPropertiesFile>true</generateGitPropertiesFile>
+          <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+          <format>properties</format>
+          <gitDescribe>
+            <skip>false</skip>
+            <always>false</always>
+            <dirty>-dirty</dirty>
+          </gitDescribe>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>			<plugin>
+      <artifactId>maven-resources-plugin</artifactId>
+      <version>2.4.3</version>
+    </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>			<plugin>
+      <groupId>org.sonatype.plugins</groupId>
+      <artifactId>nexus-staging-maven-plugin</artifactId>
+      <version>1.6.8</version>
+      <extensions>true</extensions>
+      <configuration>
+        <serverId>mvnrepo-releases</serverId>
+        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+        <autoReleaseAfterClose>true</autoReleaseAfterClose>
+      </configuration>
+    </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jdom</groupId>
+      <artifactId>jdom</artifactId>
+      <version>1.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+        <version>1.2.16</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+	<version>4.8</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
